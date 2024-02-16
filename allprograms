@@ -133,13 +133,287 @@ int differenceOfSums(int n, int m) {
 
 
 ******************************************************************************************
+
+2413. Smallest Even Multiple
+
+Example 1:
+
+Input: n = 5
+Output: 10
+Explanation: The smallest multiple of both 5 and 2 is 10.
+Example 2:
+
+Input: n = 6
+Output: 6
+Explanation: The smallest multiple of both 6 and 2 is 6. Note that a number is a multiple of itself.
+
+int smallestEvenMultiple(int n) {
+    
+    
+    for(int i=1;i<=n;i++)
+    {
+        if(n%2==1)
+        {
+            n*=2;
+        }
+        
+    }
+    return n;
+}
 ******************************************************************************************
+
+2235. Add Two Integers
+
+Example 1:
+
+Input: num1 = 12, num2 = 5
+Output: 17
+Explanation: num1 is 12, num2 is 5, and their sum is 12 + 5 = 17, so 17 is returned.
+Example 2:
+
+Input: num1 = -10, num2 = 4
+Output: -6
+Explanation: num1 + num2 = -6, so -6 is returned.
+
+int sum(int num1, int num2) {
+    int sum;
+      sum=num1+num2;
+        return sum;
+    }
+
 ******************************************************************************************
+
+1281. Subtract the Product and Sum of Digits of an Integer
+
+Example 1:
+
+Input: n = 234
+Output: 15 
+Explanation: 
+Product of digits = 2 * 3 * 4 = 24 
+Sum of digits = 2 + 3 + 4 = 9 
+Result = 24 - 9 = 15
+Example 2:
+
+Input: n = 4421
+Output: 21
+Explanation: 
+Product of digits = 4 * 4 * 2 * 1 = 32 
+Sum of digits = 4 + 4 + 2 + 1 = 11 
+Result = 32 - 11 = 21
+
+int subtractProductAndSum(int n) {
+
+    int c,prod=1,sum=0;
+    for(int i=1;n!=0;i++)
+    {
+        c=n%10;
+        prod*=c;
+        sum+=c;
+        n/=10;
+    }
+    return prod-sum;
+}
 ******************************************************************************************
+
+1688. Count of Matches in Tournament
+
+Example 1:
+
+Input: n = 7
+Output: 6
+Explanation: Details of the tournament: 
+- 1st Round: Teams = 7, Matches = 3, and 4 teams advance.
+- 2nd Round: Teams = 4, Matches = 2, and 2 teams advance.
+- 3rd Round: Teams = 2, Matches = 1, and 1 team is declared the winner.
+Total number of matches = 3 + 2 + 1 = 6.
+Example 2:
+
+Input: n = 14
+Output: 13
+Explanation: Details of the tournament:
+- 1st Round: Teams = 14, Matches = 7, and 7 teams advance.
+- 2nd Round: Teams = 7, Matches = 3, and 4 teams advance.
+- 3rd Round: Teams = 4, Matches = 2, and 2 teams advance.
+- 4th Round: Teams = 2, Matches = 1, and 1 team is declared the winner.
+Total number of matches = 7 + 3 + 2 + 1 = 13.
+
+
+
+int numberOfMatches(int n){
+
+int match=0;
+
+for(int i=1;n>1;i++)
+{
+    if(n%2==0)
+    {
+        match=match+(n/2);
+        n=n/2;
+    }
+    else
+    {
+        match=match+(n/2);
+        n=(n/2)+1;
+    }
+
+}
+return match;
+
+}
 ******************************************************************************************
+
+2652. Sum Multiples
+
+Example 1:
+
+Input: n = 7
+Output: 21
+Explanation: Numbers in the range [1, 7] that are divisible by 3, 5, or 7 are 3, 5, 6, 7. The sum of these numbers is 21.
+Example 2:
+
+Input: n = 10
+Output: 40
+Explanation: Numbers in the range [1, 10] that are divisible by 3, 5, or 7 are 3, 5, 6, 7, 9, 10. The sum of these numbers is 40.
+Example 3:
+
+Input: n = 9
+Output: 30
+Explanation: Numbers in the range [1, 9] that are divisible by 3, 5, or 7 are 3, 5, 6, 7, 9. The sum of these numbers is 30
+
+int sumOfMultiples(int n){
+
+    int sum=0;
+    for(int i=3;i<=n;i++)
+    {
+        if(i%3==0 || i%5==0 || i%7==0)
+        {
+            sum+=i;
+        }
+    }
+    return sum;
+}
+
 ******************************************************************************************
+
+1342. Number of Steps to Reduce a Number to Zero
+
+Example 1:
+
+Input: num = 14
+Output: 6
+Explanation: 
+Step 1) 14 is even; divide by 2 and obtain 7. 
+Step 2) 7 is odd; subtract 1 and obtain 6.
+Step 3) 6 is even; divide by 2 and obtain 3. 
+Step 4) 3 is odd; subtract 1 and obtain 2. 
+Step 5) 2 is even; divide by 2 and obtain 1. 
+Step 6) 1 is odd; subtract 1 and obtain 0.
+Example 2:
+
+Input: num = 8
+Output: 4
+Explanation: 
+Step 1) 8 is even; divide by 2 and obtain 4. 
+Step 2) 4 is even; divide by 2 and obtain 2. 
+Step 3) 2 is even; divide by 2 and obtain 1. 
+Step 4) 1 is odd; subtract 1 and obtain 0.
+
+int numberOfSteps(int num) {
+    if(num==0) return 0;
+    int count=0;
+    for(int i=1;num!=0;i++)
+    {
+        if(num%2==0)
+        {
+            num=num/2;
+            count++;
+        }
+        else
+        {
+            num=num-1;
+            num=num/2;
+            count+=2;
+        }
+    }
+    return count-1;
+}
+
 ******************************************************************************************
+
+2520. Count the Digits That Divide a Number
+
+Example 1:
+
+Input: num = 7
+Output: 1
+Explanation: 7 divides itself, hence the answer is 1.
+Example 2:
+
+Input: num = 121
+Output: 2
+Explanation: 121 is divisible by 1, but not 2. Since 1 occurs twice as a digit, we return 2.
+Example 3:
+
+Input: num = 1248
+Output: 4
+Explanation: 1248 is divisible by all of its digits, hence the answer is 4.
+
+int countDigits(int num) {
+    int a,count=0,v=num;
+    int i;
+    while(num!=0)
+    {
+        a=num%10;
+        if(v%a==0)
+        {
+            count++;
+        }
+        num/=10;
+    }
+    
+    return count;
+}
 ******************************************************************************************
+
+2535. Difference Between Element Sum and Digit Sum of an Array
+
+Example 1:
+
+Input: nums = [1,15,6,3]
+Output: 9
+Explanation: 
+The element sum of nums is 1 + 15 + 6 + 3 = 25.
+The digit sum of nums is 1 + 1 + 5 + 6 + 3 = 16.
+The absolute difference between the element sum and digit sum is |25 - 16| = 9.
+Example 2:
+
+Input: nums = [1,2,3,4]
+Output: 0
+Explanation:
+The element sum of nums is 1 + 2 + 3 + 4 = 10.
+The digit sum of nums is 1 + 2 + 3 + 4 = 10.
+The absolute difference between the element sum and digit sum is |10 - 10| = 0.
+
+int differenceOfSum(int* nums, int numsSize) {
+
+    int digitcount=0,elementcount=0;
+
+    for(int i=0;i<numsSize;i++)
+    {
+        elementcount+=nums[i];
+        int a=nums[i];
+        for(int j=0;a>0;j++)
+        {
+           int b=a%10;
+           digitcount+=b;
+           a/=10;
+
+        }
+    }
+    return elementcount-digitcount;
+    
+}
 ******************************************************************************************
 ******************************************************************************************
 
